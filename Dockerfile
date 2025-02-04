@@ -1,20 +1,23 @@
-# Base image
-FROM node:18
+FROM node:18-alpine
 
-# Create app directory
-WORKDIR /usr/src/app
+WORKDIR /app
 
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# Copy package files
 COPY package*.json ./
+COPY tsconfig.json ./
 
-# Install app dependencies
+# Install dependencies and NestJS CLI
+RUN npm install -g @nestjs/cli
 RUN npm install
 
-# Bundle app source
+# Copy source code
 COPY . .
 
-# Creates a "dist" folder with the production build
-RUN npm run build
+EXPOSE 3003
 
-# Start the server using the production build
-CMD [ "node", "dist/main.js" ]
+# Add wait-for script to check database availability
+ADD https://raw.githubusercontent.com/eficode/wait-for/master/wait-for /wait-for
+RUN chmod +x /wait-for
+
+# Start in development mode
+CMD ["npm", "run", "start"]
