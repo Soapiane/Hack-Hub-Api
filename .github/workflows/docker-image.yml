@@ -23,4 +23,4 @@ jobs:
             sudo chmod +x /usr/lib/docker/cli-plugins/docker-compose
             sudo su root
             # Now bring up the containers with the build flag
-            docker compose up -d --build
+            sudo docker compose up -d --build
