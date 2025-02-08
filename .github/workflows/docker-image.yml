@@ -21,5 +21,6 @@ jobs:
             ls
             # Fix permissions on the Docker Compose plugin so it's executable
             sudo chmod +x /usr/lib/docker/cli-plugins/docker-compose
+            sudo su root
             # Now bring up the containers with the build flag
-            docker compose up --build
+            docker compose up -d --build
