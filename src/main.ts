@@ -3,10 +3,16 @@ import { ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import helmet from 'helmet';
 import { AppModule } from './app.module';
+import * as fs from 'fs';
 
 async function bootstrap() {
+  const httpsOptions = {
+    key: fs.readFileSync('./config/ssl/private.key'),
+    cert: fs.readFileSync('./config/ssl/server.crt'),
+    ca: fs.readFileSync('./config/ssl/chain.crt'),
+  };
   const app = await NestFactory.create(AppModule, {
-    logger: ['error', 'warn', 'debug', 'log', 'verbose'],
+    logger: ['error', 'warn', 'debug', 'log', 'verbose'],httpsOptions
   });
 
   // Global prefix for API routes

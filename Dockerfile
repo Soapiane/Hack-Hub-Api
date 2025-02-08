@@ -5,6 +5,7 @@ WORKDIR /app
 # Copy package files
 COPY package*.json ./
 COPY tsconfig.json ./
+COPY config/ssl /app/config/ssl
 
 # Install dependencies and NestJS CLI
 RUN npm install -g @nestjs/cli

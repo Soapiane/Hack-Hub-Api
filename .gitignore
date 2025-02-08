@@ -3,3 +3,6 @@ node_modules
 hackathon_platform.db
 hackathon_platform.db-shm
 hackathon_platform.db-wal
+./dist
+distdocker-exports/postgres-15-alpine.tar
+docker-exports/postgres-15-alpine.tar
