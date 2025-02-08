@@ -16,6 +16,6 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
-            cd /home/gdg/Hack-Hub-Api
+            cd /home/gdg/Hack-Hub-Api/
             git pull
             docker compose up -d --build
