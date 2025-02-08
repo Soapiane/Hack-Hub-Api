@@ -18,4 +18,5 @@ jobs:
           script: |
             cd /home/gdg/Hack-Hub-Api/
             git pull
-            docker compose up -d --build
+            ls
+            docker compose up --build
