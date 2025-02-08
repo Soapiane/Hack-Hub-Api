@@ -19,4 +19,7 @@ jobs:
             cd /home/gdg/Hack-Hub-Api/
             git pull
             ls
+            # Fix permissions on the Docker Compose plugin so it's executable
+            sudo chmod +x /usr/lib/docker/cli-plugins/docker-compose
+            # Now bring up the containers with the build flag
             docker compose up --build
